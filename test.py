@@ -25,7 +25,7 @@ def get_green_text(text):
 def read_and_parse_file():
     questions = []
     answers = []
-    remove_tags = ['<summary>','<p>','<li>']
+    remove_tags = ['<summary>','<p>','<li>','<b>','</b>']
     return_tags = ['</p>','<ul>','</ul>','</li>', '</br>']
 
     def get_removed_text(text):
@@ -90,11 +90,14 @@ def main():
                 + ":\n\n", list2[trace[-1 + index_pointer]])
             choice = str(input("\n\
                 Enter를 누르면 랜덤 문제, '" + get_green_text("1") \
-                    + "'입력하면 이전, '" + get_green_text("2") + "'입력하면 앞으로" + get_red_text(" : ") ))
+                + "'입력하면 이전, '" + get_green_text("2") + "'입력하면 앞으로" + get_red_text(" : ") + "\n\
+                " + get_red_text("q") +"입력하면 종료"+ get_red_text(" : ")))
             if choice == '1':
                 index_pointer -= 1
             elif choice == '2':
                 index_pointer += 1
+            elif choice == 'q':
+                exit()
             else:
                 break
             index_pointer %= curr_trace_size
